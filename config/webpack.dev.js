@@ -5,8 +5,16 @@ const path = require('path');
 /* relative imports */
 const common = require('./webpack.common.js');
 
+// CSS
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge(common, {
+  plugins: [
+    // sourcemap file name in css
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+    }),
+  ],
   // enable devtool for better debugging experience
   devtool: 'cheap-module-eval-source-map',
   devServer: {

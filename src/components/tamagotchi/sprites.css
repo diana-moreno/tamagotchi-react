@@ -1,5 +1,5 @@
 .btn {
-  background-image: url('../images/background/buttons/NotSelected.png');
+  background-image: url('../images/buttons/NotSelected.png');
   background-position: 0px;
   width: 62px;
   height: 65px;
@@ -20,15 +20,15 @@
 
 .btn:hover,
 .btn:focus {
-  background-image: url('../images/background/buttons/Hover.png');
+  background-image: url('../images/buttons/Hover.png');
 }
 
 .btn:active {
-  background-image: url('../images/background/buttons/Selected.png');
+  background-image: url('../images/buttons/Selected.png');
 }
 
 .icon {
-  background-image: url('../images/background/icons/NotSelected.png');
+  background-image: url('../images/icons/NotSelected.png');
   background-position: 0px;
   width: 56px;
   height: 65px;
@@ -47,11 +47,11 @@
 }
 
 .icon.highlighted {
-  background-image: url('../images/background/icons/Hover.png');
+  background-image: url('../images/icons/Hover.png');
 }
 
 .icon.active {
-  background-image: url('../images/background/icons/Selected.png');
+  background-image: url('../images/icons/Selected.png');
 }
 
 .fox-static {

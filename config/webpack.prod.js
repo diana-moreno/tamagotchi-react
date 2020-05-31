@@ -12,10 +12,17 @@ const definePlugin = new webpack.DefinePlugin({
 
 const uglifyPlugin = new UglifyJSPlugin({ sourceMap: true });
 
+// CSS
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 module.exports = merge(common, {
   plugins: [
     uglifyPlugin,
     definePlugin,
+    // sourcemap file name in css
+    new MiniCssExtractPlugin({
+      filename: '[name]-[contenthash].css',
+    }),
   ],
   mode: 'production',
   optimization: {

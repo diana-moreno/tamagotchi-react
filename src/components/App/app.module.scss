@@ -151,7 +151,7 @@ body {
 // SPRITES
 
 .btn {
-  background-image: url('./images/buttons/BUTTONS/NotSelected.png');
+  background-image: url('../../images/buttons/NotSelected.png');
   background-position: 0px;
   width: 62px;
   height: 65px;
@@ -172,15 +172,15 @@ body {
 
 .btn:hover,
 .btn:focus {
-  background-image: url('./images/buttons/BUTTONS/Hover.png');
+  background-image: url('../../images/buttons/Hover.png');
 }
 
 .btn:active {
-  background-image: url('./images/buttons/BUTTONS/Selected.png');
+  background-image: url('../../images/buttons/Selected.png');
 }
 
 .icon {
-  background-image: url('./images/icons/ICONS/NotSelected.png');
+  background-image: url('../../images/icons/NotSelected.png');
   background-position: 0px;
   width: 56px;
   height: 65px;
@@ -199,21 +199,21 @@ body {
 }
 
 .icon.highlighted {
-  background-image: url('./images/icons/ICONS/Hover.png');
+  background-image: url('../../images/icons/Hover.png');
 }
 
 .icon.active {
-  background-image: url('./images/icons/ICONS/Selected.png');
+  background-image: url('../../images/icons/Selected.png');
 }
 
 .fox-static {
-  background-image: url('./images/pet/FoxBase.png');
+  background-image: url('../../images/pet/FoxBase.png');
   width: 117px;
   height: 165px;
 }
 
 .fox-idling {
-  background-image: url('./images/pet/AtRest.png');
+  background-image: url('../../images/pet/AtRest.png');
   background-repeat: no-repeat;
   width: 117px;
   height: 165px;
@@ -227,7 +227,7 @@ body {
 }
 
 .fox.fox-pooping {
-  background-image: url('./images/pet/Pooping.png');
+  background-image: url('../../images/pet/Pooping.png');
   background-position: -1836px;
   background-repeat: no-repeat;
   width: 204px;
@@ -236,7 +236,7 @@ body {
 }
 
 .fox.fox-pooped {
-  background-image: url('./images/pet/Pooping.png');
+  background-image: url('../../images/pet/Pooping.png');
   background-position: -1836px;
   background-repeat: no-repeat;
   width: 204px;
@@ -253,7 +253,7 @@ body {
 }
 
 .fox-celebrate.fox {
-  background-image: url('./images/pet/Yay.png');
+  background-image: url('../../images/pet/Yay.png');
   background-repeat: no-repeat;
   width: 130.8px;
   height: 213px;
@@ -267,7 +267,7 @@ body {
 }
 
 .fox-rain.fox {
-  background-image: url('./images/pet/Rain.png');
+  background-image: url('../../images/pet/Rain.png');
   background-repeat: no-repeat;
   width: 134px;
   height: 153px;
@@ -281,7 +281,7 @@ body {
 }
 
 .fox-hungry.fox {
-  background-image: url('./images/pet/Hungry.png');
+  background-image: url('../../images/pet/Hungry.png');
   background-repeat: no-repeat;
   width: 130px;
   height: 160px;
@@ -296,7 +296,7 @@ body {
 }
 
 .fox-eating.fox {
-  background-image: url('./images/pet/Eating.png');
+  background-image: url('../../images/pet/Eating.png');
   background-position: -1865.7px;
   background-repeat: no-repeat;
   width: 207.3px;
@@ -316,7 +316,7 @@ body {
 }
 
 .fox-egg.fox {
-  background-image: url('./images/pet/Egg.png');
+  background-image: url('../../images/pet/Egg.png');
   background-repeat: no-repeat;
   background-position: -1050px;
   width: 175px;
@@ -334,7 +334,7 @@ body {
 }
 
 .fox-dead.fox {
-  background-image: url('./images/pet/TombStone.png');
+  background-image: url('../../images/pet/TombStone.png');
   background-repeat: no-repeat;
   width: 118px;
   height: 119px;
@@ -348,7 +348,7 @@ body {
 }
 
 .fox-sleep.fox {
-  background-image: url('./images/pet/Sleeping.png');
+  background-image: url('../../images/pet/Sleeping.png');
   background-repeat: no-repeat;
   width: 250px;
   height: 155px;
@@ -363,7 +363,7 @@ body {
 
 .foregroundRain {
   display: none;
-  background-image: url('./images/background/rain.png');
+  background-image: url('../../images/background/rain.png');
   animation: raining 0.5s steps(3) infinite;
   width: 606px;
   height: 516px;
@@ -384,7 +384,7 @@ body {
 }
 
 .poopBag {
-  background-image: url('./images/pet/PoopBag.png');
+  background-image: url('../../images/pet/PoopBag.png');
   animation: swing-poopBag 1s steps(3) infinite alternate;
   width: 99px;
   height: 104px;
@@ -398,25 +398,25 @@ body {
 }
 
 .frame {
-  background-image: url('./images/background/FRAME.png');
+  background-image: url('../../images/background/FRAME.png');
 }
 
 .game {
-  background-image: url('./images/background/DAY.png');
+  background-image: url('../../images/background/DAY.png');
 }
 
 .game.night {
-  background-image: url('./images/background/NIGHT.png');
+  background-image: url('../../images/background/NIGHT.png');
 }
 
 .game.dead {
-  background-image: url('./images/background/DEAD.png');
+  background-image: url('../../images/background/DEAD.png');
 }
 
 .game.rain {
-  background-image: url('./images/background/RAINY.png');
+  background-image: url('../../images/background/RAINY.png');
 }
 
 body {
-  background-image: url('./images/background/Canvas.png');
+  background-image: url('../../images/background/Canvas.png');
 }

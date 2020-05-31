@@ -1,28 +1,31 @@
 import React from 'react';
-import '../style.css';
-// import '../sprites.css';
+import styles from './app.module.scss';
 
 const App = () => (
   <main>
-    <div className={'container'}>
-      <div className={'inner'}>
-        <div className={'game day'}></div>
-        <div className={'fox hidden'}></div>
-        <div className={'poop-bag hidden'}></div>
-        <div className={'foreground-rain'}></div>
-        <div className={'modal'}>
-          <div className={'modal-inner'}>Press the middle button to start</div>
+    <div className={styles.container}>
+      <div className={styles.inner}>
+        <div className={`${styles.game} ${styles.day}`}></div>
+        <div className={`${styles.fox} ${styles.hidden}`}></div>
+        <div className={`${styles.poopBag} ${styles.hidden}`}></div>
+        <div className={styles.foregroundRain}></div>
+        <div className={styles.modal}>
+          <div className={styles.modalInner}>
+            Press the middle button to start
+          </div>
         </div>
-        <div className={'frame'}></div>
-        <div className={'buttons'}>
-          <div className={'btn left-btn'}></div>
-          <div className={'btn middle-btn'}></div>
-          <div className={'btn right-btn'}></div>
+        <div className={styles.frame}></div>
+        <div className={styles.buttons}>
+          <div className={`${styles.btn} ${styles.leftBtn}`}></div>
+          <div className={`${styles.btn} ${styles.middleBtn}`}></div>
+          <div className={`${styles.btn} ${styles.rightBtn}`}></div>
         </div>
-        <div className={'icons'}>
-          <div className={'icon highlighted fish-icon'}></div>
-          <div className={'icon poop-icon'}></div>
-          <div className={'icon weather-icon'}></div>
+        <div className={styles.icons}>
+          <div
+            className={`${styles.icon} ${styles.highlighted} ${styles.fishIcon}`}
+          ></div>
+          <div className={`${styles.icon} ${styles.poopIcon}`}></div>
+          <div className={`${styles.icon} ${styles.weatherIcon}`}></div>
         </div>
       </div>
     </div>
