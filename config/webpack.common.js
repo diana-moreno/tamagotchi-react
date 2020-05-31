@@ -53,22 +53,26 @@ const config = {
           },
         },
       },
-      // {
-      //   test: /\.(jpe?g|png|gif|svg)$/,
-      //   use: ['file-loader'],
-      // },
-      // {
-      //   test: /\.(woff|woff2|eot|ttf|otf)$/,
-      //   use: ['file-loader'],
-      // },
-      // {
-      //   test: /\.(csv|tsv)$/,
-      //   use: ['csv-loader'],
-      // },
-      // {
-      //   test: /\.xml$/,
-      //   use: ['xml-loader'],
-      // },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        use: ['file-loader'],
+      },
+      {
+        test: /\.(csv|tsv)$/,
+        use: ['csv-loader'],
+      },
+      {
+        test: /\.xml$/,
+        use: ['xml-loader'],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   plugins: [htmlPlugin, hotModulePlugin, cleanPlugin],

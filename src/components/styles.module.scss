@@ -1,0 +1,422 @@
+/* general */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* frame and background */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.frame {
+  height: 762px;
+  width: 762px;
+  position: relative;
+}
+
+.inner {
+  position: relative;
+}
+
+.game {
+  width: 628px;
+  height: 577px;
+  position: absolute;
+  top: 62px;
+  left: 67px;
+}
+
+.game.night {
+  width: 716px;
+  top: 62px;
+  left: -19px;
+}
+.hidden {
+  display: none !important;
+}
+.buttons {
+  position: absolute;
+  top: 674px;
+  left: 266px;
+  height: 71px;
+  width: 228px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icons {
+  position: absolute;
+  top: 572px;
+  left: 194px;
+  height: 67px;
+  width: 374px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* poop */
+
+.poopBag {
+  position: absolute;
+  top: 300px;
+  left: 160px;
+}
+.modal {
+  position: absolute;
+  top: 5rem;
+  left: 0;
+  right: 0;
+  background-color: #0000009e;
+  padding: 233px 7rem;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+.modalInner {
+  animation: blink-animation 2s steps(5, start) infinite;
+  -webkit-animation: blink-animation 2s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    visibility: hidden;
+  }
+}
+
+.modal:empty {
+  display: none;
+}
+.modalInner:empty {
+  display: none;
+}
+.fox {
+  position: absolute;
+  top: 336px;
+  left: 285px;
+  overflow: hidden;
+}
+
+.fox-pooping {
+  top: 319px;
+  left: 159px;
+}
+.fox-celebrate {
+  top: 290px;
+  left: 290px;
+}
+.fox-rain {
+  top: 362px;
+}
+.fox-hungry {
+  top: 362px;
+}
+.fox-eating {
+  top: 362px;
+}
+.fox-egg {
+  top: 289px;
+  left: 248px;
+}
+.fox-sleep {
+  top: 351px;
+  left: 445px;
+}
+.fox-dead {
+  top: 380px;
+  left: 243px;
+}
+
+// SPRITES
+
+.btn {
+  background-image: url('./images/buttons/BUTTONS/NotSelected.png');
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.btn.middleBtn {
+  background-position: -84px 0px;
+}
+
+.btn.rightBtn {
+  background-position: -167px 0px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-image: url('./images/buttons/BUTTONS/Hover.png');
+}
+
+.btn:active {
+  background-image: url('./images/buttons/BUTTONS/Selected.png');
+}
+
+.icon {
+  background-image: url('./images/icons/ICONS/NotSelected.png');
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.icon.poopIcon {
+  background-position: -162px 0px;
+}
+
+.icon.weatherIcon {
+  background-position: -323px 0px;
+}
+
+.icon.highlighted {
+  background-image: url('./images/icons/ICONS/Hover.png');
+}
+
+.icon.active {
+  background-image: url('./images/icons/ICONS/Selected.png');
+}
+
+.fox-static {
+  background-image: url('./images/pet/FoxBase.png');
+  width: 117px;
+  height: 165px;
+}
+
+.fox-idling {
+  background-image: url('./images/pet/AtRest.png');
+  background-repeat: no-repeat;
+  width: 117px;
+  height: 165px;
+  animation: idle 2s steps(3) infinite;
+}
+
+@keyframes idle {
+  to {
+    background-position: -372px;
+  }
+}
+
+.fox.fox-pooping {
+  background-image: url('./images/pet/Pooping.png');
+  background-position: -1836px;
+  background-repeat: no-repeat;
+  width: 204px;
+  height: 202px;
+  animation: pooping 5s steps(10);
+}
+
+.fox.fox-pooped {
+  background-image: url('./images/pet/Pooping.png');
+  background-position: -1836px;
+  background-repeat: no-repeat;
+  width: 204px;
+  height: 202px;
+}
+
+@keyframes pooping {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -2040px;
+  }
+}
+
+.fox-celebrate.fox {
+  background-image: url('./images/pet/Yay.png');
+  background-repeat: no-repeat;
+  width: 130.8px;
+  height: 213px;
+  animation: celebrate 2s steps(5) infinite;
+}
+
+@keyframes celebrate {
+  to {
+    background-position: -654px;
+  }
+}
+
+.fox-rain.fox {
+  background-image: url('./images/pet/Rain.png');
+  background-repeat: no-repeat;
+  width: 134px;
+  height: 153px;
+  animation: sit-in-the-rain 2s steps(5) infinite alternate;
+}
+
+@keyframes sit-in-the-rain {
+  to {
+    background-position: -670px;
+  }
+}
+
+.fox-hungry.fox {
+  background-image: url('./images/pet/Hungry.png');
+  background-repeat: no-repeat;
+  width: 130px;
+  height: 160px;
+  top: 339px;
+  animation: hungry 1s steps(2) infinite;
+}
+
+@keyframes hungry {
+  to {
+    background-position: -260px;
+  }
+}
+
+.fox-eating.fox {
+  background-image: url('./images/pet/Eating.png');
+  background-position: -1865.7px;
+  background-repeat: no-repeat;
+  width: 207.3px;
+  height: 148px;
+  top: 358px;
+  left: 81px;
+  animation: eating 3s steps(10);
+}
+
+@keyframes eating {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -2073px;
+  }
+}
+
+.fox-egg.fox {
+  background-image: url('./images/pet/Egg.png');
+  background-repeat: no-repeat;
+  background-position: -1050px;
+  width: 175px;
+  height: 217px;
+  animation: hatching 4s steps(7);
+}
+
+@keyframes hatching {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -1225px;
+  }
+}
+
+.fox-dead.fox {
+  background-image: url('./images/pet/TombStone.png');
+  background-repeat: no-repeat;
+  width: 118px;
+  height: 119px;
+  animation: being-dead 1s steps(3) infinite;
+}
+
+@keyframes being-dead {
+  to {
+    background-position: -354px;
+  }
+}
+
+.fox-sleep.fox {
+  background-image: url('./images/pet/Sleeping.png');
+  background-repeat: no-repeat;
+  width: 250px;
+  height: 155px;
+  animation: sleeping 4s steps(4) infinite;
+}
+
+@keyframes sleeping {
+  to {
+    background-position: -1000px;
+  }
+}
+
+.foregroundRain {
+  display: none;
+  background-image: url('./images/background/rain.png');
+  animation: raining 0.5s steps(3) infinite;
+  width: 606px;
+  height: 516px;
+  overflow: hidden;
+  position: absolute;
+  top: 56px;
+  left: 60px;
+}
+
+.rain ~ .foregroundRain {
+  display: block;
+}
+
+@keyframes raining {
+  to {
+    background-position: -1818px;
+  }
+}
+
+.poopBag {
+  background-image: url('./images/pet/PoopBag.png');
+  animation: swing-poopBag 1s steps(3) infinite alternate;
+  width: 99px;
+  height: 104px;
+  overflow: hidden;
+}
+
+@keyframes swing-poopBag {
+  to {
+    background-position: -297px;
+  }
+}
+
+.frame {
+  background-image: url('./images/background/FRAME.png');
+}
+
+.game {
+  background-image: url('./images/background/DAY.png');
+}
+
+.game.night {
+  background-image: url('./images/background/NIGHT.png');
+}
+
+.game.dead {
+  background-image: url('./images/background/DEAD.png');
+}
+
+.game.rain {
+  background-image: url('./images/background/RAINY.png');
+}
+
+body {
+  background-image: url('./images/background/Canvas.png');
+}
