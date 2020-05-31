@@ -25,6 +25,7 @@ const hotModulePlugin = new webpack.HotModuleReplacementPlugin({});
 const cleanPlugin = new CleanWebpackPlugin();
 
 // CSS
+// https://adamrackis.dev/css-modules/
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {

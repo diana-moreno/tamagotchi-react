@@ -1,5 +1,5 @@
-export const ICONS = ["fish", "poop", "weather"];
-export const SCENES = ["day", "rain"];
+export const ICONS = ['fish', 'poop', 'weather'];
+export const SCENES = ['day', 'rain'];
 export const TICK_RATE = 3000;
 export const RAIN_CHANGE = 0.2;
 export const DAY_LENGTH = 60;
@@ -13,3 +13,8 @@ export const getNextDieTime = (clock) =>
 
 export const getNextPoopTime = (clock) =>
   Math.floor(Math.random() * 3) + 8 + clock;
+
+export const MODAL_TEXT_START = 'Press the middle button to start';
+
+export const MODAL_TEXT_DIE =
+  'The fox died!\n Press the middle button to play again.';
