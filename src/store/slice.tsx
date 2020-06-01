@@ -9,9 +9,10 @@ import {
   getNextPoopTime,
   MODAL_TEXT_DIE,
   MODAL_TEXT_START,
-} from '../components/constants';
+} from '../constants/constants';
+import { PetStateSlice } from 'types/pet';
 
-const initialState = {
+const initialState: PetStateSlice = {
   current: 'INIT',
   clock: 1,
   wakeTime: 0,

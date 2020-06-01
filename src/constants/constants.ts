@@ -1,20 +1,21 @@
-export const ICONS = ['fish', 'poop', 'weather'];
-export const SCENES = ['day', 'rain'];
+import { ControllableScenes } from 'types/pet';
+
+export const ICONS = ['fish', 'poop', 'weather'] as const;
+export const SCENES: ControllableScenes[] = ['day', 'rain'];
 export const TICK_RATE = 3000;
 export const RAIN_CHANGE = 0.2;
 export const DAY_LENGTH = 60;
 export const NIGHT_LENGTH = 5;
 
-export const getNextHungerTime = (clock) =>
+export const getNextHungerTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 8 + clock; // 5 - 6 - 7 + clock
 
-export const getNextDieTime = (clock) =>
+export const getNextDieTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 3 + clock;
 
-export const getNextPoopTime = (clock) =>
+export const getNextPoopTime = (clock: number) =>
   Math.floor(Math.random() * 3) + 8 + clock;
 
 export const MODAL_TEXT_START = 'Press the middle button to start';
-
 export const MODAL_TEXT_DIE =
   'The fox died!\n Press the middle button to play again.';

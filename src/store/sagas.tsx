@@ -1,5 +1,5 @@
 import { put, takeLatest } from '@redux-saga/core/effects';
-import petSlice from './slice.jsx';
+import petSlice from './slice';
 
 function* startCelebrating() {
   yield put(petSlice.actions.startCelebrating());

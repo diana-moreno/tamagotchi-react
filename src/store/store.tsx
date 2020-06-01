@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { all } from '@redux-saga/core/effects';
-import petSlice from './slice.jsx';
+import petSlice from './slice';
 import createSagaMiddleware from 'redux-saga';
-import petSagas from './sagas.jsx';
+import petSagas from './sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,5 +20,8 @@ const store = configureStore({
 });
 
 sagaMiddleware.run(rootSaga);
+
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof rootReducer>;
 
 export default store;

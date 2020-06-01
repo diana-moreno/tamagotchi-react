@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styles from './app.module.scss';
-import { ICONS, TICK_RATE } from '../constants';
+import { RootState, AppDispatch } from '../../store/store';
+import { ICONS, TICK_RATE } from '../../constants/constants';
 import {
   startGame,
   wake,
@@ -15,37 +16,38 @@ import {
   cleanUpPoop,
   changeWeather,
   die,
-} from '../../store/slice.jsx';
-import Modal from '../Modal/Modal.jsx';
+} from '../../store/slice';
+import Modal from '../Modal/Modal';
+import { AppProps, Icon } from 'types/pet';
 
-const App = ({
+const App: FC<AppProps> = ({
   clock,
-  startGame,
   modFox,
   modScene,
   showModal,
   showIcons,
-  setClock,
   wakeTime,
-  wake,
   sleepTime,
-  sleep,
-  getHungry,
   hungryTime,
-  feed,
   current,
   timeToStartCelebrating,
   timeToStopCelebrating,
+  showPoopBag,
+  poopTime,
+  dieTime,
+  modalText,
+  startGame,
+  setClock,
+  wake,
+  sleep,
+  getHungry,
+  feed,
   startCelebrating,
   stopCelebrating,
-  showPoopBag,
   poop,
-  poopTime,
   cleanUpPoop,
   changeWeather,
   die,
-  dieTime,
-  modalText,
 }) => {
   useEffect(() => {
     if (clock === wakeTime) {
@@ -80,7 +82,7 @@ const App = ({
     nextAnimationFrame(); // first call of the closure
   };
 
-  const handleUserAction = (icon) => {
+  const handleUserAction = (icon: Icon) => {
     if (['SLEEP', 'FEEDING', 'CELEBRATING', 'HATCHING'].includes(current)) {
       return;
     }
@@ -111,23 +113,26 @@ const App = ({
 
   const [selectedIcon, setSelectedIcon] = useState(0);
 
-  const isHighlighted = (index) =>
+  const isHighlighted = (index: 0 | 1 | 2) =>
     selectedIcon === index ? styles.highlighted : null;
 
-  const selectIcon = ({ target }) => {
-    if (target.value === 'left') {
+  const selectIcon = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    const { value } = event.currentTarget;
+    if (value === 'left') {
       setSelectedIcon((2 + selectedIcon) % ICONS.length);
-    } else if (target.value === 'right') {
+    } else if (value === 'right') {
       setSelectedIcon((1 + selectedIcon) % ICONS.length);
     } else {
       handleUserAction(ICONS[selectedIcon]);
     }
   };
 
-  const setModFox = (modFox) =>
+  const setModFox = (modFox: string | null) =>
     styles[`fox${modFox?.charAt(0).toUpperCase()}${modFox?.slice(1)}`];
 
-  const setModScene = (modScene) => styles[modScene];
+  const setModScene = (modScene: string) => styles[modScene];
 
   return (
     <main className={styles.container}>
@@ -192,7 +197,7 @@ const App = ({
 };
 
 export default connect(
-  (state) => ({
+  (state: RootState) => ({
     clock: state.pet.clock,
     modFox: state.pet.modFox,
     modScene: state.pet.modScene,
@@ -206,15 +211,14 @@ export default connect(
     timeToStopCelebrating: state.pet.timeToStopCelebrating,
     showPoopBag: state.pet.showPoopBag,
     poopTime: state.pet.poopTime,
-    cleanUpPoop: state.pet.cleanUpPoop,
     dieTime: state.pet.dieTime,
     modalText: state.pet.modalText,
   }),
-  (dispatch) => ({
+  (dispatch: AppDispatch) => ({
     startGame: () => {
       dispatch(startGame());
     },
-    setClock: (payload) => {
+    setClock: (payload: number) => {
       dispatch(setClock(payload));
     },
     wake: () => {
