@@ -26,13 +26,14 @@ const cleanPlugin = new CleanWebpackPlugin();
 
 // CSS
 // https://adamrackis.dev/css-modules/
+// https://medium.com/better-programming/how-to-set-up-a-react-project-using-webpack-typescript-and-sass-74914421158a
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   entry: {
-    app: './src/index.jsx',
-    // print: './src/print.jsx',
+    app: './src/index.tsx',
   },
+  devtool: 'inline-source-map',
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, '../dist'),
@@ -41,6 +42,11 @@ const config = {
   devtool: 'eval-source-map',
   module: {
     rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        use: 'ts-loader',
+      },
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
       {
         test: /\.txt$/,
         use: 'raw-loader',
@@ -51,10 +57,12 @@ const config = {
         exclude: /node_modules/,
         include: path.resolve(__dirname, '../src'),
         use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
+          loader: 'ts-loader',
+          // with jsx:
+          // loader: 'babel-loader',
+          // options: {
+          //   cacheDirectory: true,
+          // },
         },
       },
       {
@@ -99,6 +107,9 @@ const config = {
     ],
   },
   plugins: [htmlPlugin, hotModulePlugin, cleanPlugin],
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
 };
 
 module.exports = config;
