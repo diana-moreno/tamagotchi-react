@@ -1,4 +1,4 @@
-import { ControllableScenes } from 'types/pet';
+import { ControllableScenes, ButtonStyle, IconStyle } from 'types/pet';
 
 export const ICONS = ['fish', 'poop', 'weather'] as const;
 export const SCENES: ControllableScenes[] = ['day', 'rain'];
@@ -19,3 +19,27 @@ export const getNextPoopTime = (clock: number) =>
 export const MODAL_TEXT_START = 'Press the middle button to start';
 export const MODAL_TEXT_DIE =
   'The fox died!\n Press the middle button to play again.';
+
+export const ICONS_LIST: { value: IconStyle }[] = [
+  {
+    value: 'fishIcon',
+  },
+  {
+    value: 'poopIcon',
+  },
+  {
+    value: 'weatherIcon',
+  },
+];
+
+export const BUTTONS_LIST: { value: ButtonStyle }[] = [
+  {
+    value: 'left',
+  },
+  {
+    value: 'middle',
+  },
+  {
+    value: 'right',
+  },
+];

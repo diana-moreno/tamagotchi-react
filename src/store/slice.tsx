@@ -10,7 +10,11 @@ import {
   MODAL_TEXT_DIE,
   MODAL_TEXT_START,
 } from '../constants/constants';
-import { PetStateSlice } from 'types/pet';
+import { PetState } from 'types/pet';
+
+export interface PetStateSlice extends PetState {
+  scene: number;
+}
 
 const initialState: PetStateSlice = {
   current: 'INIT',

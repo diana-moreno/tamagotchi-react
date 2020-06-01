@@ -2,7 +2,12 @@ import React, { FC, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styles from './app.module.scss';
 import { RootState, AppDispatch } from '../../store/store';
-import { ICONS, TICK_RATE } from '../../constants/constants';
+import {
+  ICONS,
+  TICK_RATE,
+  ICONS_LIST,
+  BUTTONS_LIST,
+} from '../../constants/constants';
 import {
   startGame,
   wake,
@@ -18,7 +23,24 @@ import {
   die,
 } from '../../store/slice';
 import Modal from '../Modal/Modal';
-import { AppProps, Icon } from 'types/pet';
+import { PetState, Icon, ButtonStyle, IconStyle } from 'types/pet';
+import IconFC from '../Icon/Icon';
+import ButtonFC from '../Button/Button';
+
+export interface AppProps extends PetState {
+  startGame: () => void;
+  setClock: (x: number) => void;
+  wake: () => void;
+  sleep: () => void;
+  getHungry: () => void;
+  feed: () => void;
+  startCelebrating: () => void;
+  stopCelebrating: () => void;
+  poop: () => void;
+  cleanUpPoop: () => void;
+  changeWeather: () => void;
+  die: () => void;
+}
 
 const App: FC<AppProps> = ({
   clock,
@@ -113,9 +135,6 @@ const App: FC<AppProps> = ({
 
   const [selectedIcon, setSelectedIcon] = useState(0);
 
-  const isHighlighted = (index: 0 | 1 | 2) =>
-    selectedIcon === index ? styles.highlighted : null;
-
   const selectIcon = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
@@ -144,51 +163,23 @@ const App: FC<AppProps> = ({
         {showModal && <Modal modalText={modalText} />}
         <div className={styles.frame}></div>
         <ul className={styles.buttons}>
-          <li>
-            <button
-              onClick={selectIcon}
-              value='left'
-              className={`${styles.btn} ${styles.leftBtn}`}
-            ></button>
-          </li>
-          <li>
-            <button
-              onClick={selectIcon}
-              value='middle'
-              className={`${styles.btn} ${styles.middleBtn}`}
-            ></button>
-          </li>
-          <li>
-            <button
-              onClick={selectIcon}
-              value='right'
-              className={`${styles.btn} ${styles.rightBtn}`}
-            ></button>
-          </li>
+          {BUTTONS_LIST.map((elem: { value: ButtonStyle }, index: number) => (
+            <li key={index}>
+              <ButtonFC value={elem.value} selectIcon={selectIcon} />
+            </li>
+          ))}
         </ul>
         {showIcons && (
           <ul className={`${styles.icons}`}>
-            <li>
-              <div className={`${styles.icon} ${isHighlighted(0)}`}></div>
-            </li>
-            <li>
-              <div
-                className={`
-                ${styles.icon} 
-                ${styles.poopIcon}
-                ${isHighlighted(1)}
-              `}
-              ></div>
-            </li>
-            <li>
-              <div
-                className={`
-                ${styles.icon} 
-                ${styles.weatherIcon} 
-                ${isHighlighted(2)}
-              `}
-              ></div>
-            </li>
+            {ICONS_LIST.map((elem: { value: IconStyle }, index: number) => (
+              <li key={index}>
+                <IconFC
+                  value={elem.value}
+                  index={index}
+                  selectedIcon={selectedIcon}
+                />
+              </li>
+            ))}
           </ul>
         )}
       </section>

@@ -1,0 +1,30 @@
+.icon {
+  background-image: url('../../images/icons/NotSelected.png');
+  background-position: 0px;
+  width: 56px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.icon.fishIcon {
+  background-position: 0px;
+}
+
+.icon.poopIcon {
+  background-position: -162px 0px;
+}
+
+.icon.weatherIcon {
+  background-position: -323px 0px;
+}
+
+.icon.highlighted {
+  background-image: url('../../images/icons/Hover.png');
+}
+
+.icon.active {
+  background-image: url('../../images/icons/Selected.png');
+}

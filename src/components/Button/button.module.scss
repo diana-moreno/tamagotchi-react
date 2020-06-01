@@ -1,0 +1,29 @@
+.btn {
+  outline: none;
+  background-image: url('../../images/buttons/NotSelected.png');
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.btn.middleBtn {
+  background-position: -84px 0px;
+}
+
+.btn.rightBtn {
+  background-position: -167px 0px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-image: url('../../images/buttons/Hover.png');
+}
+
+.btn:active {
+  background-image: url('../../images/buttons/Selected.png');
+}

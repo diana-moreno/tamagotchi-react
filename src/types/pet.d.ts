@@ -1,4 +1,6 @@
 export type Icon = 'weather' | 'poop' | 'fish';
+export type IconStyle = 'weatherIcon' | 'poopIcon' | 'fishIcon';
+export type ButtonStyle = 'left' | 'middle' | 'right';
 export type ControllableScenes = 'day' | 'rain';
 export type Scenes = ControllableScenes | 'night' | 'dead';
 export type SceneIndex = 0 | 1;
@@ -40,23 +42,4 @@ export interface PetState {
   poopTime: number;
   dieTime: number;
   modalText: string;
-}
-
-export interface PetStateSlice extends PetState {
-  scene: number;
-}
-
-export interface AppProps extends PetState {
-  startGame: () => void;
-  setClock: (x: number) => void;
-  wake: () => void;
-  sleep: () => void;
-  getHungry: () => void;
-  feed: () => void;
-  startCelebrating: () => void;
-  stopCelebrating: () => void;
-  poop: () => void;
-  cleanUpPoop: () => void;
-  changeWeather: () => void;
-  die: () => void;
 }
