@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import styles from './app.module.scss';
-import { ICONS, TICK_RATE, MODAL_TEXT_START } from '../constants';
+import { ICONS, TICK_RATE } from '../constants';
 import {
   startGame,
   wake,
@@ -16,6 +16,7 @@ import {
   changeWeather,
   die,
 } from '../../store/slice.jsx';
+import Modal from '../Modal/Modal.jsx';
 
 const App = ({
   clock,
@@ -46,21 +47,6 @@ const App = ({
   dieTime,
   modalText,
 }) => {
-  const initTime = () => {
-    let newtTimeToTick = Date.now();
-
-    function nextAnimationFrame() {
-      const now = Date.now();
-
-      if (newtTimeToTick <= now) {
-        setClock(1);
-        newtTimeToTick = now + TICK_RATE;
-      }
-      requestAnimationFrame(nextAnimationFrame);
-    }
-    nextAnimationFrame(); // first call of the closure
-  }; // TODO sería una saga???
-
   useEffect(() => {
     if (clock === wakeTime) {
       wake();
@@ -78,6 +64,21 @@ const App = ({
       die();
     }
   }, [clock]);
+
+  const initTime = () => {
+    let newtTimeToTick = Date.now();
+
+    function nextAnimationFrame() {
+      const now = Date.now();
+
+      if (newtTimeToTick <= now) {
+        setClock(1);
+        newtTimeToTick = now + TICK_RATE;
+      }
+      requestAnimationFrame(nextAnimationFrame);
+    }
+    nextAnimationFrame(); // first call of the closure
+  };
 
   const handleUserAction = (icon) => {
     if (['SLEEP', 'FEEDING', 'CELEBRATING', 'HATCHING'].includes(current)) {
@@ -135,11 +136,7 @@ const App = ({
         <div className={`${styles.fox} ${setModFox(modFox)}`}></div>
         {showPoopBag && <div className={`${styles.poopBag}`}></div>}
         <div className={styles.foregroundRain}></div>
-        {showModal && (
-          <div className={styles.modal}>
-            <p className={styles.modalInner}>{modalText || MODAL_TEXT_START}</p>
-          </div>
-        )}
+        {showModal && <Modal modalText={modalText} />}
         <div className={styles.frame}></div>
         <ul className={styles.buttons}>
           <li>
