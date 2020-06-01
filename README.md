@@ -20,6 +20,7 @@ I decided to refactor the project with React but avoiding to use create-react-ap
 
 - To set up a project from scratch with Webpack.
 - Add SCSS Modules to Webpack.
+- Add TypeScript to Webpack.
 - Better understanding of Javascript closures with requestAnimationFrame function.
-- Refactor from JS vanilla to React.
+- Refactor from JS vanilla to React with Typescript.
 - Advanced animations with sprites and steps.
