@@ -11,8 +11,9 @@ import {
   MODAL_TEXT_START,
 } from '../constants/constants';
 import { PetState } from 'types/pet';
+import { consoleMessage } from '../utils/utils';
 
-export interface PetStateSlice extends PetState {
+interface PetStateSlice extends PetState {
   scene: number;
 }
 
@@ -40,11 +41,11 @@ const petSlice = createSlice({
   initialState,
   reducers: {
     setClock(state, action) {
-      console.log(state.clock);
+      consoleMessage(state.clock);
       state.clock = state.clock + action.payload;
     },
     startGame(state) {
-      console.log('start game');
+      consoleMessage('start game');
       state.current = 'HATCHING';
       state.wakeTime = state.clock + 3;
       state.modFox = 'egg';
@@ -53,7 +54,7 @@ const petSlice = createSlice({
       state.showIcons = true;
     },
     wake(state) {
-      console.log('awoken');
+      consoleMessage('awoken');
       state.current = 'IDLING';
       state.wakeTime = 0;
       state.modScene = SCENES[state.scene];
@@ -61,7 +62,7 @@ const petSlice = createSlice({
       state.hungryTime = getNextHungerTime(state.clock);
     },
     sleep(state) {
-      console.log('sleep');
+      consoleMessage('sleep');
       state.current = 'SLEEP';
       state.modFox = 'sleep';
       state.modScene = 'night';
@@ -69,7 +70,7 @@ const petSlice = createSlice({
       state.wakeTime = state.clock + NIGHT_LENGTH;
     },
     clearTimes(state) {
-      console.log('clear times');
+      consoleMessage('clear times');
       state.wakeTime = 0;
       state.sleepTime = 0;
       state.hungryTime = 0;
@@ -79,14 +80,14 @@ const petSlice = createSlice({
       state.timeToStopCelebrating = 0;
     },
     getHungry(state) {
-      console.log('hungry');
+      consoleMessage('hungry');
       state.current = 'HUNGRY';
       state.dieTime = getNextDieTime(state.clock);
       state.hungryTime = 0;
       state.modFox = 'hungry';
     },
     feed(state) {
-      console.log('feed');
+      consoleMessage('feed');
       state.current = 'FEEDING';
       state.dieTime = 0;
       state.poopTime = getNextPoopTime(state.clock);
@@ -94,33 +95,33 @@ const petSlice = createSlice({
       state.timeToStartCelebrating = state.clock + 2;
     },
     poop(state) {
-      console.log('poop');
+      consoleMessage('poop');
       state.current = 'POOPING';
       state.poopTime = 0;
       state.dieTime = getNextDieTime(state.clock);
       state.modFox = 'pooping';
     },
     cleanUpPoop(state) {
-      console.log('clean up poop');
+      consoleMessage('clean up poop');
       state.dieTime = 0;
       state.showPoopBag = true;
       state.hungryTime = getNextHungerTime(state.clock);
     },
     startCelebrating(state) {
-      console.log('start celebrating');
+      consoleMessage('start celebrating');
       state.current = 'CELEBRATING';
       state.modFox = 'celebrate';
       state.timeToStartCelebrating = 0;
       state.timeToStopCelebrating = state.clock + 2;
     },
     stopCelebrating(state) {
-      console.log('stop celebrating');
+      consoleMessage('stop celebrating');
       state.timeToStopCelebrating = 0;
       state.current = 'IDLING';
       state.showPoopBag = false;
     },
     changeWeather(state) {
-      console.log('change weather');
+      consoleMessage('change weather');
       state.scene = (state.scene + 1) % SCENES.length;
       state.modScene = SCENES[state.scene];
     },
@@ -131,7 +132,7 @@ const petSlice = createSlice({
           : 'idling';
     },
     die(state) {
-      console.log('dead');
+      consoleMessage('dead');
       state.current = 'DEAD';
       state.modScene = 'dead';
       state.modFox = 'dead';

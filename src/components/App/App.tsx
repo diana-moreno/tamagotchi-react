@@ -27,7 +27,7 @@ import { PetState, Icon, ButtonStyle, IconStyle } from 'types/pet';
 import IconFC from '../Icon/Icon';
 import ButtonFC from '../Button/Button';
 
-export interface AppProps extends PetState {
+interface AppProps extends PetState {
   startGame: () => void;
   setClock: (x: number) => void;
   wake: () => void;
