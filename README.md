@@ -10,7 +10,7 @@ The project is developed with Javascript vanilla in a first instance and the goa
 
 ## Technologies
 
-I decided to refactor the project with React but avoiding to use create-react-app and to set up a project from scratch with Webpack, SCSS modules, Redux and Typescript.
+I decided to refactor the project with React but avoiding to use create-react-app and set up a project from scratch with Webpack, SCSS modules, Redux and Typescript.
 
 [Here](https://custom-tamagotchi.netlify.app/) is the deployed version of the project.
 
