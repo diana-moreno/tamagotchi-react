@@ -83,22 +83,7 @@ body {
   top: 300px;
   left: 160px;
 }
-.modal {
-  position: absolute;
-  top: 3rem;
-  left: 0;
-  right: 0;
-  background-color: #0000009e;
-  padding: 233px 7rem;
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  font-weight: bold;
-}
-.modalInner {
-  animation: blink-animation 2s steps(5, start) infinite;
-  -webkit-animation: blink-animation 2s steps(5, start) infinite;
-}
+
 @keyframes blink-animation {
   to {
     visibility: hidden;
@@ -108,13 +93,6 @@ body {
   to {
     visibility: hidden;
   }
-}
-
-.modal:empty {
-  display: none;
-}
-.modalInner:empty {
-  display: none;
 }
 .fox {
   position: absolute;
