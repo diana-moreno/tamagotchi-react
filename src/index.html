@@ -3,8 +3,16 @@
   <head>
     <title>Tamagotchi</title>
     <meta charset="UTF-8" />
+    <meta name="mobile-wep-app-capable" content="yes"></meta>
+    <meta name="apple-mobile-web-app-capable" content="yes"></meta>
+    <link rel="manifest" href="manifest/manifest.json"></link>
   </head>
   <body>
     <div id="react-root"></div>
+    <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
+      const el = document.createElement('pwa-update');
+      document.body.appendChild(el);
+    </script>
   </body>
 </html>
