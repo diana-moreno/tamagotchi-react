@@ -89,20 +89,22 @@ const App: FC<AppProps> = ({
     }
   }, [clock]);
 
-  const initTime = () => {
-    let newtTimeToTick = Date.now();
+  useEffect(() => {
+    (function initTime() {
+      let newtTimeToTick = Date.now();
 
-    function nextAnimationFrame() {
-      const now = Date.now();
+      function nextAnimationFrame() {
+        const now = Date.now();
 
-      if (newtTimeToTick <= now) {
-        setClock(1);
-        newtTimeToTick = now + TICK_RATE;
+        if (newtTimeToTick <= now) {
+          setClock(1);
+          newtTimeToTick = now + TICK_RATE;
+        }
+        requestAnimationFrame(nextAnimationFrame);
       }
-      requestAnimationFrame(nextAnimationFrame);
-    }
-    nextAnimationFrame(); // first call of the closure
-  };
+      nextAnimationFrame(); // first call of the closure
+    })();
+  }, []);
 
   const handleUserAction = (icon: Icon) => {
     if (['SLEEP', 'FEEDING', 'CELEBRATING', 'HATCHING'].includes(current)) {
@@ -110,7 +112,6 @@ const App: FC<AppProps> = ({
     }
     if (current === 'INIT' || current === 'DEAD') {
       startGame();
-      initTime();
       return;
     }
 

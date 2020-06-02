@@ -66,18 +66,13 @@ const petSlice = createSlice({
       state.current = 'SLEEP';
       state.modFox = 'sleep';
       state.modScene = 'night';
-      petSlice.actions.clearTimes();
-      state.wakeTime = state.clock + NIGHT_LENGTH;
-    },
-    clearTimes(state) {
-      consoleMessage('clear times');
-      state.wakeTime = 0;
       state.sleepTime = 0;
       state.hungryTime = 0;
       state.poopTime = 0;
       state.dieTime = 0;
       state.timeToStartCelebrating = 0;
       state.timeToStopCelebrating = 0;
+      state.wakeTime = state.clock + NIGHT_LENGTH;
     },
     getHungry(state) {
       consoleMessage('hungry');
@@ -124,12 +119,15 @@ const petSlice = createSlice({
       consoleMessage('change weather');
       state.scene = (state.scene + 1) % SCENES.length;
       state.modScene = SCENES[state.scene];
+      console.log(state.current);
     },
     determineFoxState(state) {
       state.modFox =
-        state.current === 'IDLING' && SCENES[state.scene] === 'rain'
-          ? 'rain'
-          : 'idling';
+        state.current === 'IDLING'
+          ? SCENES[state.scene] === 'rain'
+            ? 'rain'
+            : 'idling'
+          : state.modFox;
     },
     die(state) {
       consoleMessage('dead');
@@ -139,7 +137,13 @@ const petSlice = createSlice({
       state.modalText = MODAL_TEXT_DIE;
       state.showModal = true;
       state.showIcons = false;
-      petSlice.actions.clearTimes();
+      state.wakeTime = 0;
+      state.sleepTime = 0;
+      state.hungryTime = 0;
+      state.poopTime = 0;
+      state.dieTime = 0;
+      state.timeToStartCelebrating = 0;
+      state.timeToStopCelebrating = 0;
     },
   },
 });
