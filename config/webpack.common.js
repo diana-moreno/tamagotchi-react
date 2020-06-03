@@ -29,8 +29,13 @@ const cleanPlugin = new CleanWebpackPlugin();
 // https://medium.com/better-programming/how-to-set-up-a-react-project-using-webpack-typescript-and-sass-74914421158a
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// PROGRESSIVE WEB APP
 // Generate a service worker
+// https://developers.google.com/web/tools/workbox/guides/generate-service-worker/webpack
 const WorkboxPlugin = require('workbox-webpack-plugin');
+// Create manifest
+// https://codeburst.io/progressive-web-app-with-webpack-198b073f6c74
+const WebpackPwaManifest = require('webpack-pwa-manifest');
 
 const config = {
   entry: {
@@ -114,6 +119,25 @@ const config = {
     hotModulePlugin,
     cleanPlugin,
     new WorkboxPlugin.GenerateSW(),
+    new WebpackPwaManifest({
+      name: 'Tamagotchi',
+      short_name: 'Tamagotchi',
+      description:
+        "This is a custom version of a Tamagotchi, the handheld virtual pet of the 90's",
+      background_color: '#1b242f',
+      theme_color: '#151b22',
+      'theme-color': '#01579b',
+      start_url: '/',
+      display: 'standalone',
+      // cache_busting_mode: 'none',
+      icons: [
+        {
+          src: path.resolve('src/favicon/icon.png'),
+          sizes: [96, 128, 192, 256, 384, 512],
+          destination: path.join('assets', 'icons'),
+        },
+      ],
+    }),
   ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
