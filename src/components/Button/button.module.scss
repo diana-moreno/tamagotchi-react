@@ -19,10 +19,14 @@
   background-position: -167px 0px;
 }
 
-.btn:hover {
+.btn:active {
   background-image: url('../../images/buttons/Hover.png');
+  // background-image: url('../../images/buttons/Selected.png');
 }
 
-.btn:active {
-  background-image: url('../../images/buttons/Selected.png');
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover,
+  .btn:active {
+    background-image: url('../../images/buttons/Hover.png');
+  }
 }
