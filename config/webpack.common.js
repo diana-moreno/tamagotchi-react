@@ -29,6 +29,9 @@ const cleanPlugin = new CleanWebpackPlugin();
 // https://medium.com/better-programming/how-to-set-up-a-react-project-using-webpack-typescript-and-sass-74914421158a
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+// Generate a service worker
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 const config = {
   entry: {
     app: './src/index.tsx',
@@ -106,7 +109,12 @@ const config = {
       },
     ],
   },
-  plugins: [htmlPlugin, hotModulePlugin, cleanPlugin],
+  plugins: [
+    htmlPlugin,
+    hotModulePlugin,
+    cleanPlugin,
+    new WorkboxPlugin.GenerateSW(),
+  ],
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
