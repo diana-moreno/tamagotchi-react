@@ -133,7 +133,7 @@ const config = {
       icons: [
         {
           src: path.resolve('src/favicon/icon.png'),
-          sizes: [96, 128, 192, 256, 384, 512],
+          sizes: [512, 384, 256, 192, 144, 96, 72, 48],
           destination: path.join('assets', 'icons'),
         },
       ],
